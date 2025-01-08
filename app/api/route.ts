@@ -1,9 +1,16 @@
-export const revalidate = 60
- 
-export async function GET() {
-//   const data = await fetch('https://api.vercel.app/blog')
-//   const posts = await data.json()
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET(request: NextRequest) {
     console.log('HIT-HIT');
-const posts = []
-  return Response.json(posts)
+    console.log('Request:', request);
+    try {
+        return NextResponse.json({
+            message: 'User found',
+            data: 'Booboo',
+        });
+    } catch (error: any) {
+        return NextResponse.json({ error: error.message }, { status: 400 });
+    }
 }
